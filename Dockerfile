@@ -26,3 +26,9 @@ RUN makepkg -sri --noconfirm
 
 WORKDIR /tmp/aur/yaourt
 RUN makepkg -sri --noconfirm
+
+USER root
+RUN pacman --noconfirm -Rns $(pacman -Qttdq) && \
+    pacman --noconfirm -Sc && \
+    rm -rf /tmp/* && \
+    userdel worker-bee
