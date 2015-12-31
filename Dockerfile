@@ -11,7 +11,7 @@ RUN pacman -Syy && \
     chmod +x /usr/local/bin/gosu && \
     useradd -m worker-bee && \
     echo 'worker-bee ALL=(ALL) NOPASSWD:ALL' > /etc/sudoers.d/worker-bee && \
-    mkdir -p /tmp/aur
+    install -d -m 777 /tmp/aur
 
 USER worker-bee
 WORKDIR /tmp/aur
